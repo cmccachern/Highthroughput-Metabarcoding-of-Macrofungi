@@ -249,6 +249,19 @@ dim(seqtab.nochim)[[2]]/dim(seqtab)[[2]]
 
 ```
 
+```{r redo list}
+
+# Extract sample names again from filtered file names - to account for lost specimen after the filter and trim step.
+
+#Get sample names from file names (from filtF this time instead of cutF)
+sample.names2 <- unname(sapply(filtFs, get.sample.name))
+
+#Take a look at the first few
+head(sample.names2)
+length(sample.names2)
+
+```
+
 # Summarize Process
 
 ```{r}
@@ -276,19 +289,19 @@ write.table(track_labelled, file="6_readcount_summary.txt", row.names=FALSE, col
 ```{r}
 #Add better labels (output format funny)
 seqtabF_labelled = data.frame("Filename" = rownames(seqtabF), seqtabF)
-seqtabF_labelled  = data.frame("Specimen" = sample.names, seqtabF_labelled)
+seqtabF_labelled  = data.frame("Specimen" = sample.names2, seqtabF_labelled)
 write.table(seqtabF_labelled , file="7_inference_table_Forward.txt", row.names=FALSE, col.names=TRUE, sep = "\t", quote = FALSE)
 
 seqtabR_labelled  = data.frame("Filename" = rownames(seqtabR), seqtabR)
-seqtabR_labelled  = data.frame("Specimen" = sample.names, seqtabR_labelled)
+seqtabR_labelled  = data.frame("Specimen" = sample.names2, seqtabR_labelled)
 write.table(seqtabR_labelled, file="7_inference_table_Reverse.txt", row.names=FALSE, col.names=TRUE, sep = "\t", quote = FALSE)
 
 seqtab_labelled = data.frame("Filename" = rownames(seqtab), seqtab)
-seqtab_labelled = data.frame("Specimen" = sample.names, seqtab_labelled)
+seqtab_labelled = data.frame("Specimen" = sample.names2, seqtab_labelled)
 write.table(seqtab_labelled, file="7_inference_table_merged.txt", row.names=FALSE, col.names=TRUE, sep = "\t", quote = FALSE)
 
 seqtab.nochim_labelled = data.frame("Filename" = rownames(seqtab.nochim), seqtab.nochim)
-seqtab.nochim_labelled = data.frame("Specimen" = sample.names, seqtab.nochim_labelled)
+seqtab.nochim_labelled = data.frame("Specimen" = sample.names2, seqtab.nochim_labelled)
 write.table(seqtab.nochim_labelled, file="7_inference_table_chimerasremoved.txt", row.names=FALSE, col.names=TRUE, sep = "\t", quote = FALSE)
 
 ```
