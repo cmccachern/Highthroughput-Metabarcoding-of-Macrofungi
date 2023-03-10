@@ -1,0 +1,7 @@
+jupyter
+numpy
+matplotlib
+tqdm
+biopython
+cutadapt
+pandas
