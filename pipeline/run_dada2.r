@@ -33,7 +33,6 @@ library(ggplot2)
 #Define variable to hold working directory with fastq files after primer removal (cutadapt pre-processing)
 inpath <- path.expand("~/Files/dev/fungi/Highthroughput-Metabarcoding-of-Macrofungi/results/NoPrimersTest")
 inpath2 <- path.expand("~/Files/dev/fungi/Highthroughput-Metabarcoding-of-Macrofungi/results/NoPrimersTest/Filter_Trim")
-#inpath2 <- "/Users/careymccachern/Files/dev/fungi/Highthroughput-Metabarcoding-of-Macrofungi/results/NoPrimers/Filter_Trim"
 
 outpath <- "/Users/careymccachern/Files/dev/fungi/Highthroughput-Metabarcoding-of-Macrofungi/results"
 
