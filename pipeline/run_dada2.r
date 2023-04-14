@@ -31,10 +31,10 @@ library(ggplot2)
 #Filter & trim primer-free reads for quality
 
 #Define variable to hold working directory with fastq files after primer removal (cutadapt pre-processing)
-inpath <- path.expand("~/Files/dev/fungi/Highthroughput-Metabarcoding-of-Macrofungi/results/NoPrimersTest")
-inpath2 <- path.expand("~/Files/dev/fungi/Highthroughput-Metabarcoding-of-Macrofungi/results/NoPrimersTest/Filter_Trim")
-
-outpath <- "/Users/careymccachern/Files/dev/fungi/Highthroughput-Metabarcoding-of-Macrofungi/results"
+args = commandArgs(trailingOnly=TRUE)
+inpath <- args[1]
+inpath2 <- args[2]
+outpath <- args[3]
 
 #Locate the input files
 cutFs <- sort(list.files(inpath, pattern = "_R1_noprimer.fastq", full.names = TRUE))
