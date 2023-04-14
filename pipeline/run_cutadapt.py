@@ -186,14 +186,16 @@ def run_cutadapt(input_dir, trimmed_dir, cutadapt_logfile="2_cutadapt_noprimers.
 
 if __name__ == "__main__":
     
-    results_dir = "/Users/careymccachern/Files/dev/fungi/Highthroughput-Metabarcoding-of-Macrofungi/results"
+    results_dir = os.path.expanduser("~/Files/dev/fungi/Highthroughput-Metabarcoding-of-Macrofungi/results")
     
-    MAINdir = "/Users/careymccachern/Files/dev/fungi/Highthroughput-Metabarcoding-of-Macrofungi/data/20221213_2022A_MarCorNAMA/SplitBySample"
-    trimmed_dir = f"{MAINdir}/NoPrimers"
+    MAINdir = os.path.expanduser("~/Files/dev/fungi/Highthroughput-Metabarcoding-of-Macrofungi/data/20221213_2022A_MarCorNAMA/SplitBySample")
+    trimmed_dir = f"{results_dir}/NoPrimers"
+    if not os.path.exists(trimmed_dir):
+        os.mkdir(trimmed_dir)
 
 
     summarize_fastq_directory(input_dir=MAINdir,
                               forward_out_file=f"{results_dir}/1_Raw_forward_fastqs_summary.txt",
                               reverse_out_file=f"{results_dir}/1_Raw_reverse_fastqs_summary.txt")
 
-    #run_cutadapt(MAINdir, trimmed_dir, cutadapt_logfile="2_cutadapt_noprimers.txt"):
+    run_cutadapt(MAINdir, trimmed_dir, cutadapt_logfile=os.path.join(results_dir, "2_cutadapt_noprimers.txt"))
